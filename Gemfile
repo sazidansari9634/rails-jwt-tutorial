@@ -46,7 +46,9 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'jsonapi-serializer'
 gem 'jwt'
-gem 'graphql', "~> 2.0.9"
+gem 'graphql', '1.11.6'
+
+
 
 
 
@@ -70,6 +72,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  gem 'graphiql-rails', "~> 1.8.0"
+  gem 'graphiql-rails', '1.7.0', group: :development
+
 end
 
