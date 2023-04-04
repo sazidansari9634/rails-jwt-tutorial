@@ -314,4 +314,29 @@ Devise.setup do |config|
 
   config.navigational_formats = []
 
+  config.jwt do |jwt|
+    jwt.secret = Rails.application.credentials.fetch(:secret_key_base)
+    jwt.dispatch_requests = [
+      ['POST', %r{^/login$}]
+    ]
+    jwt.revocation_requests = [
+      ['DELETE', %r{^/logout$}]
+    ]
+    jwt.expiration_time = 30.minutes.to_i
+
+    config.jwt do |jwt|
+      jwt.secret = Rails.application.credentials.fetch(:secret_key_base)
+      jwt.dispatch_requests = [
+        ['POST', %r{^/users/login}]
+      ]
+      jwt.revocation_requests = [
+        ['DELETE', %r{^/users/logout}]
+      ]
+      jwt.expiration_time = 120.minutes.to_i
+    end
+  end
+
+
+  
+
 end
